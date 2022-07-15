@@ -14,13 +14,9 @@ function checkRooms () {
 		console.log('--- Проверка номеров в отеле ---');
 		setTimeout(() => {
 			const response = true;
-			if (response) {
-				let message = 'Номера в отеле имеются!';
-				resolve(message);
-			} else {
-				let message = 'Номера в отеле отсутствуют...';
-				reject(message);
-			}
+
+			if (response) resolve('Номера в отеле имеются!');
+			else reject('Номера в отеле отсутствуют...');
 		}, 1000);
 	});
 }
@@ -31,13 +27,9 @@ const checkTickets = (data) => {
 	return new Promise ((resolve, reject) => {
 		setTimeout(() => {
 			const response = true;
-			if (response) {
-				let message = 'Авиабилеты имеются!';
-				resolve(message);
-			} else {
-				let message = 'Авиабилеты отсутствуют...';
-				reject(message);
-			}
+			
+			if (response) resolve('Авиабилеты имеются!');
+			else reject('Авиабилеты отсутствуют...');
 		}, 2000);
 	});
 }
