@@ -1,4 +1,4 @@
-function successCheck (data) {
+const success = (data) => {
 
 	console.log('Ответ от сервера:', data);
 
@@ -6,12 +6,37 @@ function successCheck (data) {
 
 }
 
-function failedCheck (data) {
+const failed = (data) => {
 
 	console.log('Ответ от сервера:', data);
 
 	console.log('Не едем в отпуск... :(');
 
+}
+
+const checkTickets = (data) => {
+
+	console.log('Ответ от сервера:', data);
+
+	console.log('--- Проверка авиабилетов ---');
+
+	return new Promise ((resolve, reject) => {
+
+		setTimeout(() => {
+
+			const response = true;
+
+			if (response) {
+				let message = 'Авиабилеты имеются!';
+				resolve(message);
+			} else {
+				let message = 'Авиабилеты отсутствуют...';
+				reject(message);
+			}
+		}, 2000);
+
+	});
+	
 }
 
 const checkData = new Promise ((resolve, reject) => {
@@ -32,27 +57,4 @@ const checkData = new Promise ((resolve, reject) => {
 		}
 	}, 1000);
 
-}).then((data) => {
-
-	console.log('Ответ от сервера:', data);
-
-	console.log('--- Проверка авиабилетов ---');
-
-	return new Promise ((resolve, reject) => {
-
-		setTimeout(() => {
-
-			const response = true;
-
-			if (response) {
-				let message = 'Авиабилеты имеются!';
-				resolve(message);
-			} else {
-				let message = 'Авиабилеты отсутствуют...';
-				reject(message);
-			}
-		}, 2000);
-		
-	});
-
-}).then(successCheck).catch(failedCheck);
+}).then(checkTickets).then(success).catch(failed);
