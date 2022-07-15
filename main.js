@@ -12,6 +12,7 @@ function checkRooms () {
 	return new Promise ((resolve, reject) => {
 		console.log('Ассинхронная проверка данных Promise');
 		console.log('--- Проверка номеров в отеле ---');
+
 		setTimeout(() => {
 			const response = true;
 
@@ -24,10 +25,11 @@ function checkRooms () {
 const checkTickets = (data) => {
 	console.log('Ответ от сервера:', data);
 	console.log('--- Проверка авиабилетов ---');
+	
 	return new Promise ((resolve, reject) => {
 		setTimeout(() => {
 			const response = true;
-			
+
 			if (response) resolve('Авиабилеты имеются!');
 			else reject('Авиабилеты отсутствуют...');
 		}, 2000);
