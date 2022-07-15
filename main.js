@@ -8,7 +8,7 @@ const failed = (data) => {
 	console.log('Не едем в отпуск... :(');
 }
 
-function checkData () {
+function checkRooms () {
 	return new Promise ((resolve, reject) => {
 		console.log('Ассинхронная проверка данных Promise');
 		console.log('--- Проверка номеров в отеле ---');
@@ -42,7 +42,7 @@ const checkTickets = (data) => {
 	});
 }
 
-checkData()
+checkRooms()
 	.then(checkTickets)
 	.then(success)
 	.catch(failed);
