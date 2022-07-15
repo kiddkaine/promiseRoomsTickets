@@ -42,4 +42,7 @@ const checkTickets = (data) => {
 	});
 }
 
-checkData().then(checkTickets).then(success).catch(failed);
+checkData()
+	.then(checkTickets)
+	.then(success)
+	.catch(failed);
