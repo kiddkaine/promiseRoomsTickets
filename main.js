@@ -1,51 +1,58 @@
-const checkRooms = new Promise ((resolve, reject) => {
+function successCheck (data) {
+
+	console.log('Ответ от сервера:', data);
+
+	console.log('Едем в отпуск! :)');
+
+}
+
+function failedCheck (data) {
+
+	console.log('Ответ от сервера:', data);
+
+	console.log('Не едем в отпуск... :(');
+
+}
+
+const checkData = new Promise ((resolve, reject) => {
+
+	console.log('Ассинхронная проверка данных Promise');
+
+	console.log('--- Проверка номеров в отеле ---');
+
 	setTimeout(() => {
-		console.log('Проверяем номера в отеле...');
+		const response = true;
 
-		const availableRooms = true;
-
-		if (availableRooms) {
+		if (response) {
 			let message = 'Номера в отеле имеются!';
 			resolve(message);
 		} else {
 			let message = 'Номера в отеле отсутствуют...';
 			reject(message);
 		}
-	}, 1500);
+	}, 1000);
+
 }).then((data) => {
-	return new Promise((resolve, reject) => {
+
+	console.log('Ответ от сервера:', data);
+
+	console.log('--- Проверка авиабилетов ---');
+
+	return new Promise ((resolve, reject) => {
+
 		setTimeout(() => {
-			console.log('----- then 1 -----');
 
-			console.log('Ответ:', data);
+			const response = true;
 
-			console.log('Проверяем авиабилеты...');
-
-			const availableTickets = true;
-	
-			if (availableTickets) {
-				let message = 'Билеты имеются!';
+			if (response) {
+				let message = 'Авиабилеты имеются!';
 				resolve(message);
 			} else {
-				let message = 'Билеты отсутствуют...';
+				let message = 'Авиабилеты отсутствуют...';
 				reject(message);
 			}
-		}, 1500);
+		}, 2000);
+		
 	});
-}).then((data) => {
-	setTimeout(() => {
-		console.log('----- then 2 -----');
 
-		console.log('Ответ:', data);
-
-		console.log('Едем в отпуск! :)');
-	}, 2000);
-}).catch((data) => {
-	setTimeout(() => {
-		console.log('---- catch ----');
-
-		console.log('Ответ:', data);
-
-		console.log('Не едем в отпуск... :(');
-	}, 2000);
-});
+}).then(successCheck).catch(failedCheck);
